@@ -1,0 +1,147 @@
+unit uMenuAwal;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ComCtrls, ExtCtrls, jpeg, Menus;
+
+type
+  TfMainmenu = class(TForm)
+    Image1: TImage;
+    btnketranspengobatan: TImage;
+    Image3: TImage;
+    Image4: TImage;
+    Image2: TImage;
+    Timer1: TTimer;
+    btnlogout: TImage;
+    Image6: TImage;
+    Image5: TImage;
+    procedure Image1Click(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+    procedure btnketranspengobatanClick(Sender: TObject);
+    procedure Image3Click(Sender: TObject);
+    procedure Image5Click(Sender: TObject);
+    procedure KeluarAplikasi1Click(Sender: TObject);
+    procedure entangAplikasi1Click(Sender: TObject);
+    procedure KembaliKeAdmin1Click(Sender: TObject);
+    procedure btnlogoutClick(Sender: TObject);
+    procedure Image8Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fMainmenu: TfMainmenu;
+
+implementation
+
+uses UASAL, uMasterObat, uMasterLogin, uDoctorMenu, uInsertMasterPegawai,
+  ulihatrecord, ulogindokter, uMainUtama, uMasterDokter,
+  uMasterKegunaanObat, uMasterKeluarga, uMasterPasien, uMasterPilihan,
+  uPasien, upilihdokter, uSplash, uMenuPegawai, uLihatTranspeg,
+  uPilihKeluarga, umainobat, Unit1, uAbout, uFamilytypetrans,
+  ulihatdataobat, ulihatkeluarga, uLihatPasien, ulogin, umainobatpoli,
+  uStatusPegawai, uTransunit, uDoctorMain, uLihatBerobatKeluarga,
+  ulihatChart, ulihatchart2, ulihatchartobat, ulihatdataberobat,
+  uLihatDataDokter, uMenuBerobat, uMenuDokter, uMenuUser;
+
+{$R *.dfm}
+
+procedure TfMainmenu.Image1Click(Sender: TObject);
+begin
+  formmainkeluarga.Show;
+  fMainmenu.Hide;
+end;
+
+procedure TfMainmenu.Image2Click(Sender: TObject);
+begin
+  Application.Terminate;
+end;
+
+procedure TfMainmenu.btnketranspengobatanClick(Sender: TObject);
+begin
+  formmenuberobat.lbllogin.Caption:='Administrasi PLN';
+  formmenuberobat.Show;
+  fMainmenu.Hide;
+end;
+
+procedure TfMainmenu.Image3Click(Sender: TObject);
+begin
+  formmainpegawai.Show;
+  fMainmenu.Hide;
+end;
+
+procedure TfMainmenu.Image5Click(Sender: TObject);
+begin
+if MessageDlg('Apakah Anda ingin Logout Sekarang ?',mtWarning,mbYesNoCancel,1)=mrYes then
+  begin
+  formutama.Show;
+  fMainmenu.Hide;
+  end
+else
+  begin
+    Abort;
+  end;
+end;
+
+procedure TfMainmenu.KeluarAplikasi1Click(Sender: TObject);
+begin
+Application.Terminate;
+end;
+
+procedure TfMainmenu.entangAplikasi1Click(Sender: TObject);
+begin
+formabout.Show;
+end;
+
+procedure TfMainmenu.KembaliKeAdmin1Click(Sender: TObject);
+begin
+fMainmenu.Hide;
+formLogin.Show;
+//
+
+ftransaksipegawai.lbllogin.Caption:='None';
+formlihattranspeg.lbllogin.Caption:='None';
+formmainpegawai.lbllogin.Caption:='None';
+//
+formAdminTreatment.lbllogin.Caption:='None';
+formpengobatan.lbllogin.Caption:='None';
+formmainpasien.lbllogin.Caption:='None';
+formpasien.lbllogin.Caption:='None';
+//
+formtablekeluarga.lbllogin.Caption:='None';
+formlihatkeluarga.lbllogin.Caption:='None';
+formmainkeluarga.lbllogin.Caption:='None';
+end;
+
+procedure TfMainmenu.btnlogoutClick(Sender: TObject);
+begin
+formmenudokter.Show;
+fMainmenu.Hide;
+end;
+
+procedure TfMainmenu.Image8Click(Sender: TObject);
+begin
+formmainobat.Show;
+fMainmenu.Hide;
+end;
+
+procedure TfMainmenu.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+If MessageDlg('Apakah Anda Ingin Keluar Dari Aplikasi',mtConfirmation,mbYesNoCancel,1)=mrYes then
+  begin
+    Application.Terminate;
+    MessageDlg('Terima Kasih Telah menggunakan Aplikasi',mtInformation,[mbOk],1);
+    end
+else
+  begin
+    Abort;
+  end;
+
+end;
+
+end.
