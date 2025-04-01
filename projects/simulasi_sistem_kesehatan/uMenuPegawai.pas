@@ -1,0 +1,130 @@
+unit uMenuPegawai;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, jpeg, ExtCtrls, StdCtrls, Menus;
+
+type
+  Tformmainpegawai = class(TForm)
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    Image4: TImage;
+    Shape5: TShape;
+    Label18: TLabel;
+    Label21: TLabel;
+    lbllogin: TLabel;
+    Shape6: TShape;
+    Shape9: TShape;
+    lbljam: TLabel;
+    lblhari: TLabel;
+    Timer1: TTimer;
+    Image5: TImage;
+    procedure Image3Click(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+    procedure Image4Click(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure KeluarAplikasi1Click(Sender: TObject);
+    procedure KembalikeAdmin1Click(Sender: TObject);
+    procedure ransaksiPegawai1Click(Sender: TObject);
+    procedure LihatdataPegawai1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formmainpegawai: Tformmainpegawai;
+
+implementation
+
+uses UASAL, uDoctorMenu, uInsertMasterPegawai, ulihatrecord, ulogindokter,
+  uMainUtama, uMasterDokter, uMasterKegunaanObat, uMasterKeluarga,
+  uMasterLogin, uMasterObat, uMasterPasien, uMasterPilihan, uMenuAwal,
+  uPasien, upilihdokter, uSplash, uPilihKeluarga, uLihatTranspeg;
+
+{$R *.dfm}
+
+procedure Tformmainpegawai.Image3Click(Sender: TObject);
+begin
+  fMainmenu.Show;
+  formmainpegawai.Hide;
+end;
+
+procedure Tformmainpegawai.Image2Click(Sender: TObject);
+begin
+ftransaksipegawai.ADOConnection1.Connected:=true;
+ftransaksipegawai.qkstatus.Active:=true;
+ftransaksipegawai.qkunit.Active:=true;
+ftransaksipegawai.querypegawai.Active:=true;
+ftransaksipegawai.queryedit.Active:=true;
+ftransaksipegawai.queryrefresh.Active:=true;
+ftransaksipegawai.querypeg.Active:=true;
+ftransaksipegawai.adopegawai.Active:=true;
+ftransaksipegawai.tabelkeluarga.Active:=true;
+ftransaksipegawai.tabelpasien.Active:=true;
+ftransaksipegawai.tabelrecord.Active:=true;
+ftransaksipegawai.tabelbeliobat.Active:=true;
+  ftransaksipegawai.Show;
+  formmainpegawai.Hide;
+end;
+
+procedure Tformmainpegawai.Image4Click(Sender: TObject);
+begin
+formlihattranspeg.ADOConnection1.Connected:=true;
+formlihattranspeg.queryreport.Active:=true;
+formlihattranspeg.ADOQuery1.Active:=true;
+formlihattranspeg.ADOQuery2.Active:=true;
+formlihattranspeg.adokodeunit.Active:=true;
+formlihattranspeg.Show;
+formmainpegawai.Hide;
+end;
+
+procedure Tformmainpegawai.Timer1Timer(Sender: TObject);
+begin
+lbljam.Caption:=FormatDateTime('hh:mm:ss',now);
+lblhari.Caption:=FormatDateTime('dddd,mmmm,yyyy',now);
+end;
+
+procedure Tformmainpegawai.KeluarAplikasi1Click(Sender: TObject);
+begin
+Application.Terminate;
+end;
+
+procedure Tformmainpegawai.KembalikeAdmin1Click(Sender: TObject);
+begin
+fMainmenu.Show;
+formmainpegawai.Hide;
+end;
+
+procedure Tformmainpegawai.ransaksiPegawai1Click(Sender: TObject);
+begin
+ftransaksipegawai.Show;
+formmainpegawai.Hide;
+end;
+
+procedure Tformmainpegawai.LihatdataPegawai1Click(Sender: TObject);
+begin
+formlihattranspeg.Show;
+formmainpegawai.hide;
+end;
+
+procedure Tformmainpegawai.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+If MessageDlg('Apakah Anda Ingin Keluar Dari Aplikasi',mtConfirmation,mbYesNoCancel,1)=mrYes then
+  begin
+    Application.Terminate;
+    MessageDlg('Terima Kasih Telah menggunakan Aplikasi',mtInformation,[mbOk],1);
+    end
+else
+  begin
+    Abort;
+  end;
+end;
+
+end.

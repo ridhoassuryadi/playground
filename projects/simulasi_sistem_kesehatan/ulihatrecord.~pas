@@ -1,0 +1,173 @@
+unit ulihatrecord;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, StdCtrls, ADODB, Grids, DBGrids, jpeg, ExtCtrls, ComCtrls;
+
+type
+  Tformrecorddokter = class(TForm)
+    DBGrid1: TDBGrid;
+    ADOQuery1: TADOQuery;
+    ADOConnection1: TADOConnection;
+    GroupBox1: TGroupBox;
+    GroupBox2: TGroupBox;
+    DataSource1: TDataSource;
+    Image1: TImage;
+    Image2: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    ednomor: TEdit;
+    ednama: TEdit;
+    edkel: TEdit;
+    edanamesa: TEdit;
+    edpemfis: TEdit;
+    edpempen: TEdit;
+    edtanggal: TEdit;
+    edobat: TEdit;
+    Label9: TLabel;
+    ednomorinduk: TEdit;
+    eddiagnosa: TEdit;
+    Label10: TLabel;
+    edcarino: TEdit;
+    Label11: TLabel;
+    btncarinomorinduk: TImage;
+    Image3: TImage;
+    Label12: TLabel;
+    edcariinduk: TEdit;
+    Image4: TImage;
+    edcarinama: TEdit;
+    Label13: TLabel;
+    Label14: TLabel;
+    Image5: TImage;
+    edcarikel: TEdit;
+    Image6: TImage;
+    Label15: TLabel;
+    edanamesterimpin: TEdit;
+    Label16: TLabel;
+    edcaridiagnosa: TEdit;
+    Image7: TImage;
+    Label17: TLabel;
+    Image8: TImage;
+    DateTimePicker1: TDateTimePicker;
+    Label18: TLabel;
+    Label19: TLabel;
+    procedure DBGrid1CellClick(Column: TColumn);
+    procedure btncarinomorindukClick(Sender: TObject);
+    procedure Image3Click(Sender: TObject);
+    procedure Image4Click(Sender: TObject);
+    procedure Image5Click(Sender: TObject);
+    procedure Image6Click(Sender: TObject);
+    procedure Image7Click(Sender: TObject);
+    procedure Image8Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formrecorddokter: Tformrecorddokter;
+
+implementation
+
+{$R *.dfm}
+
+procedure Tformrecorddokter.DBGrid1CellClick(Column: TColumn);
+begin
+ednomor.Text:=ADOQuery1.FieldByName('No').AsString;
+ednama.Text:=ADOQuery1.FieldByName('Nama_Pasien').AsString;
+ednomorinduk.Text:=ADOQuery1.FieldByName('Nomor_Induk').AsString;
+edkel.Text:=ADOQuery1.FieldByName('Keluhan').AsString;
+edanamesa.Text:=ADOQuery1.FieldByName('Anamesa_terimpin').AsString;
+edpemfis.Text:=ADOQuery1.FieldByName('Pemeriksaan_fisik').AsString;
+edpempen.Text:=ADOQuery1.FieldByName('Pemeriksaan_penunjang').AsString;
+eddiagnosa.Text:=ADOQuery1.FieldByName('diagnosa').AsString;
+edtanggal.Text:=ADOQuery1.FieldByName('Tanggal_Berobat').AsString;
+edobat.Text:=ADOQuery1.FieldByName('Obat').AsString;
+
+end;
+
+procedure Tformrecorddokter.btncarinomorindukClick(Sender: TObject);
+begin
+ADOQuery1.Close;
+ADOQuery1.SQL.Clear;
+ADOQuery1.SQL.Add('SELECT * FROM master_record_berobat WHERE No =:no ORDER BY No ASC');
+ADOQuery1.Parameters.ParamByName('no').Value:=edcarino.Text;
+ADOQuery1.Open;
+ADOQuery1.First;
+end;
+
+procedure Tformrecorddokter.Image3Click(Sender: TObject);
+begin
+ADOQuery1.Close;
+ADOQuery1.SQL.Clear;
+ADOQuery1.SQL.Add('SELECT * FROM master_record_berobat WHERE Nomor_induk =:nomor ORDER BY No ASC');
+ADOQuery1.Parameters.ParamByName('nomor').Value:=edcariinduk.Text;
+ADOQuery1.Open;
+ADOQuery1.First;
+end;
+
+procedure Tformrecorddokter.Image4Click(Sender: TObject);
+begin
+ADOQuery1.Close;
+ADOQuery1.SQL.Clear;
+ADOQuery1.SQL.Add('SELECT * FROM master_record_berobat WHERE Nama_Pasien =:nama ORDER BY No ASC');
+ADOQuery1.Parameters.ParamByName('nama').Value:=edcarinama.Text;
+ADOQuery1.Open;
+ADOQuery1.First;
+
+end;
+
+procedure Tformrecorddokter.Image5Click(Sender: TObject);
+begin
+ADOQuery1.Close;
+ADOQuery1.SQL.Clear;
+ADOQuery1.SQL.Add('SELECT * FROM master_record_berobat WHERE Keluhan =:keluhan ORDER BY No ASC');
+ADOQuery1.Parameters.ParamByName('keluhan').Value:=edkel.Text;
+ADOQuery1.Open;
+ADOQuery1.First;
+
+end;
+
+procedure Tformrecorddokter.Image6Click(Sender: TObject);
+begin
+ADOQuery1.Close;
+ADOQuery1.SQL.Clear;
+ADOQuery1.SQL.Add('SELECT * FROM master_record_berobat WHERE Anamesa_terimpin =:ap ORDER BY No ASC');
+ADOQuery1.Parameters.ParamByName('ap').Value:=edanamesterimpin.Text;
+ADOQuery1.Open;
+ADOQuery1.First;
+
+end;
+
+procedure Tformrecorddokter.Image7Click(Sender: TObject);
+begin
+ADOQuery1.Close;
+ADOQuery1.SQL.Clear;
+ADOQuery1.SQL.Add('SELECT * FROM master_record_berobat WHERE Diagnosa =:diagnosa ORDER BY No ASC');
+ADOQuery1.Parameters.ParamByName('diagnosa').Value:=edcaridiagnosa.Text;
+ADOQuery1.Open;
+ADOQuery1.First;
+
+end;
+
+procedure Tformrecorddokter.Image8Click(Sender: TObject);
+begin
+ADOQuery1.Close;
+ADOQuery1.SQL.Clear;
+ADOQuery1.SQL.Add('SELECT * FROM master_record_berobat WHERE Tanggal_Berobat =:tanggal ORDER BY No ASC');
+ADOQuery1.Parameters.ParamByName('tanggal').Value:=FormatDateTime('mm/dd/yyyy',DateTimePicker1.Date);
+ADOQuery1.Open;
+ADOQuery1.First;
+
+end;
+
+end.
