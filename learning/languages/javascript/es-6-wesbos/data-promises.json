@@ -1,0 +1,10 @@
+{
+   "icecreams" : [
+      { "name" : "magnum", "ingredients" : ["chocolate", "cream"] },
+      { "name" : "vanilla", "ingredients" : ["vanilla", "cream"] }
+    ],
+    "cars" : [
+       { "name" : "tesla" , "owner" : "ridho" },
+       { "name" : "bmw" , "owner" : "my father" }
+    ]
+}
