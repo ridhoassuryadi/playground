@@ -1,0 +1,10 @@
+{
+  "env": {
+      "node": true,
+      "browser": true,
+  },
+  "extends": "airbnb",
+  "rules": {
+      "no-console": 1,
+  }
+}

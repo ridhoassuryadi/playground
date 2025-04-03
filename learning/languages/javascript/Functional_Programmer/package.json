@@ -1,0 +1,12 @@
+{
+  "name": "Functional_Programmer",
+  "version": "0.1.1",
+  "description": "Functional Programming",
+  "main": "index.js",
+  "author": "ridho",
+  "license": "MIT",
+  "dependencies": {
+    "ramda": "^0.24.1",
+    "ramda-fantasy": "^0.8.0"
+  }
+}

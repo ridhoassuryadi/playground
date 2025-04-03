@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<title>Template Strings!</title>
+    </head>
+    <body>
+      <script>
+	const dogs = [
+              { name : "Snickers", age: 2},
+	      { name : "Hugo", age : 8},
+	      { name : "Sunny", age : 1}
+	    ],
+
+         friends = ['d','y','a'];
+
+const renderList = (items) => `
+	<ul>
+      ${items.map(item => `<li>${item}</li>`).join('')}
+	</ul>
+	`
+
+
+const markup = `${renderList(friends)}
+	    <ul>
+		${dogs.map(dog => `<li>${dog.name} is ${dog.age * 7}`).join('')}
+	    </ul>
+	`
+      document.body.innerHTML = markup;
+      </script>
+    </body>
+</html>
+
