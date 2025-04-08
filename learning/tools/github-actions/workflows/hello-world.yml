@@ -1,0 +1,24 @@
+name: Hello World Workflow
+
+# Trigger pada event push
+on:
+  push:
+    branches: [ main ]
+
+# Jobs yang akan dijalankan
+jobs:
+  # ID job: say-hello
+  say-hello:
+    # Runner yang digunakan
+    runs-on: ubuntu-latest
+    
+    # Steps dalam job
+    steps:
+      # Step dengan nama "Say Hello"
+      - name: Say Hello
+        # Command yang dijalankan
+        run: echo "Hello, GitHub Actions!"
+      
+      # Step tambahan untuk menampilkan info lingkungan
+      - name: Show GitHub Context
+        run: echo "Repository - ${{ github.repository }}"
