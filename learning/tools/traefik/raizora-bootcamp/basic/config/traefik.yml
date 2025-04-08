@@ -1,0 +1,46 @@
+## KONFIGURASI STATIS TRAEFIK ##
+
+# Endpoint global
+global:
+  checkNewVersion: true
+  sendAnonymousUsage: false
+
+# Konfigurasi log
+log:
+  level: INFO
+
+# Konfigurasi entrypoints
+entryPoints:
+  web:
+    address: ":80"
+    # Redirect HTTP ke HTTPS
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+  websecure:
+    address: ":443"
+
+# Aktifkan dashboard
+api:
+  dashboard: true
+  insecure: true  # Hanya untuk pengembangan! Gunakan autentikasi di produksi
+
+# Provider Docker
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false
+  file:
+    directory: "/etc/traefik/dynamic_conf"
+    watch: true
+
+# Konfigurasi Let's Encrypt
+certificatesResolvers:
+  myresolver:
+    acme:
+      email: your-email@example.com
+      storage: /etc/traefik/acme.json
+      httpChallenge:
+        entryPoint: web
