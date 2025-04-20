@@ -39,6 +39,16 @@ fn shadowing() {
     println!("Hello {}", name);
 }
 
+/*
+* Ini komentar
+* Jika lebih dari 1 
+* atau mungkin lebih dari 2
+*/
+#[test]
+fn comment() {
+    // ini komentar 1 baris
+    println!("ahoy!!!1");
+}
 
 struct Person {
    first_name: String,
