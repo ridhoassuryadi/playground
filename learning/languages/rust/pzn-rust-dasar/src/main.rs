@@ -30,6 +30,15 @@ fn test_mutable() {
     println!("{}", name);
 }
 
+#[test]
+fn shadowing() {
+    let name = "Ridho Assuryadi";
+    println!("Hello {}", name);
+   
+    let name = 10;
+    println!("Hello {}", name);
+}
+
 
 struct Person {
    first_name: String,
