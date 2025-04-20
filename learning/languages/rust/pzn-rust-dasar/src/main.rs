@@ -50,6 +50,43 @@ fn comment() {
     println!("ahoy!!!1");
 }
 
+#[test]
+fn number() {
+    let a: i8 = 10;
+    println!("i8 {}", a);
+
+    let b: i16 = 21;
+    println!("i16 {}", b);
+
+    let c: f32 = 244.1;
+    println!("f32 {}", c)
+}
+
+#[test]
+fn number_conversion() {
+   let a: i8 = 10;
+   println!("a {}", a);
+   
+   let b: i16 = a as i16;
+   println!("b: {}", b);
+
+   let c: f32 = b as f32; 
+   println!("c: {}", c);
+}
+
+#[test]
+fn numeric_operator() {
+    let a = 10;
+    let b = 2;
+    let c = a * b;
+    println!("c: {}", c);
+
+    let d = a / b;
+    println!("d: {}", d);
+
+    let e = a + b;
+    println!("e: {}", e);
+}
 struct Person {
    first_name: String,
    middle_name: String,
