@@ -8,6 +8,20 @@ fn hello_test() {
 }
 
 #[test]
+fn test_variable() {
+    let name = "Ridho";
+    println!("{}", name);
+}
+
+#[test]
+fn static_typing() {
+    let name = "Ridho assuryadi";
+    println!("{}", name);
+
+    println!("Hello {}", name);
+}
+
+#[test]
 fn test_mutable() {
     let mut name = "Eko Kurniawan Kennedy";
     println!("{}", name);
