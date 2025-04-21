@@ -260,3 +260,40 @@ fn string_type() {
     println!("{}", sambal);
     println!("{}", name);
 }
+
+#[test]
+fn ownership_rules() {
+    let a = 10;
+
+    {
+        let b = 10;
+        println!("{}", b);
+    }
+
+    println!("{}", a)
+}
+
+#[test]
+fn data_copy() {
+    let a = 10;
+    let b = a;
+
+    println!("data copy: {} {}", a, b);
+}
+
+#[test]
+fn ownership_movemen() {
+    let name1: String = String::from("Bubur");
+    println!("{}", name1);
+
+    let name2: String = name1; // ownership has been moved
+    println!("{}", name2);
+}
+
+#[test]
+fn clone() {
+    let vehicle = String::from("Honda");
+    let bike = vehicle.clone();
+
+    println!("{} {}", vehicle, bike);
+}
