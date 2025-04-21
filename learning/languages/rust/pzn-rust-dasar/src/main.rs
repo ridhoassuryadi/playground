@@ -87,6 +87,40 @@ fn numeric_operator() {
     let e = a + b;
     println!("e: {}", e);
 }
+
+#[test]
+fn boolean() {
+    let a = true;
+    let b: bool = false;
+
+    println!("a: {}, b: {}", a, b);
+}
+
+#[test]
+fn comparison() {
+    let a = 20;
+    let b = 20;
+
+    let result: bool = a >= b; 
+    println!("test: {}", result);
+}
+
+#[test]
+fn boolean_operator() {
+    let absen = 75;
+    let nilai_akhir = 80;
+
+    let lulus_absen: bool = absen >= 75;
+    let lulus_nilai_akhir: bool = nilai_akhir >= 75;
+
+    let lulus: bool = lulus_absen && lulus_nilai_akhir;
+    println!("asoy");
+    println!("hasil bool operator: {}", lulus);
+}
+
+
+
+
 struct Person {
    first_name: String,
    middle_name: String,
@@ -109,3 +143,157 @@ fn get_person() {
     println!("{}", person.age);
 }
 
+#[test]
+fn char_type() {
+    let char1: char = 'a';
+    let char2: char = 'b';
+
+    println!("{} {}", char1, char2);
+}
+
+#[test]
+fn tupple() {
+    let mut data: (i16, f64, bool) = (10, 10.5, false);
+    println!("{:?}", data);
+
+    let (a, b, c) = data;
+    println!("tupple before: {} {} {}", a, b, c);
+
+    data.0 = 11;
+    data.1 = 0.6;
+    data.2 = true;
+    println!("tupple after: {:?}", data);
+}
+
+#[test]
+fn unit() {
+    println!("hello");
+}
+
+#[test]
+fn test_unit() {
+    let result: () = unit();
+    println!("{:?}", result);
+
+    let test: () = ();
+    println!("{:?}", test)
+}
+
+#[test]
+fn two_dimensional_array() {
+    let matrix: [[i32; 3]; 2] = [
+        [1, 2, 3],
+        [4, 5, 6]
+    ];
+
+    println!("{:?}", matrix);
+    println!("{:?}", matrix[0]);
+    println!("{:?}", matrix[0][0]);
+    println!("{:?}", matrix[0][1]);
+    println!("{:?}", matrix[0][2]);
+    println!("{:?}", matrix[1]);
+    println!("{:?}", matrix[1][0]);
+    println!("{:?}", matrix[1][1]);
+    println!("{:?}", matrix[1][2]);
+}
+
+const MAXIMUM: i32 = 100;
+
+#[test]
+fn constant() {
+    const MINIMUM: i16 = 25;
+    println!("min:{} max:{}", MINIMUM, MAXIMUM);
+}
+
+#[test]
+fn variable_scope() {
+    println!("MAXIMUM: {}", MAXIMUM);
+
+    let porsi = 1;
+
+    {
+        println!("porsi 1: {}", porsi);
+
+        let fullfilled = true;
+        println!("fullfilled: {}", fullfilled);
+    }
+
+    // println!("FULLFILLED: {}", fullfilled); //error
+}
+
+#[test]
+fn stack_heap() {
+    function_a();
+    function_b();
+}
+
+#[test]
+fn function_a() {
+    let a = 10;
+    let b = String::from("Ridho");
+}
+
+#[test]
+fn function_b() {
+    let a = 15;
+    let b = String::from("Assuryadi");
+}
+
+#[test]
+fn string() {
+    let name: &str = "   Ridho Assuryadi  ";
+    let trimmed_name: &str = name.trim();
+
+    println!("{} name", name);
+    println!("{} trimmed name", trimmed_name);
+}
+
+#[test]
+fn string_type() {
+    let mut name: String = String::from("Nasi goreng");
+    println!("{}", name);
+
+    name.push_str("Sayur");
+    println!("{}", name);
+
+    let sambal = name.replace("Nasi", "Sambal");
+    println!("{}", sambal);
+    println!("{}", name);
+}
+
+#[test]
+fn ownership_rules() {
+    let a = 10;
+
+    {
+        let b = 10;
+        println!("{}", b);
+    }
+
+    println!("{}", a)
+}
+
+#[test]
+fn data_copy() {
+    let a = 10;
+    let b = a;
+
+    println!("data copy: {} {}", a, b);
+}
+
+#[test]
+fn ownership_movemen() {
+    let name1: String = String::from("Bubur");
+    println!("{}", name1);
+
+    let name2: String = name1; // ownership has been moved
+    println!("{}", name2);
+}
+
+#[test]
+fn clone() {
+    let vehicle = String::from("Honda");
+    let bike = vehicle.clone();
+
+    println!("{} {}", vehicle, bike);
+}
