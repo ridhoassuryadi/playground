@@ -196,3 +196,45 @@ fn two_dimensional_array() {
     println!("{:?}", matrix[1][1]);
     println!("{:?}", matrix[1][2]);
 }
+
+const MAXIMUM: i32 = 100;
+
+#[test]
+fn constant() {
+    const MINIMUM: i16 = 25;
+    println!("min:{} max:{}", MINIMUM, MAXIMUM);
+}
+
+#[test]
+fn variable_scope() {
+    println!("MAXIMUM: {}", MAXIMUM);
+
+    let porsi = 1;
+
+    {
+        println!("porsi 1: {}", porsi);
+
+        let fullfilled = true;
+        println!("fullfilled: {}", fullfilled);
+    }
+
+    // println!("FULLFILLED: {}", fullfilled); //error
+}
+
+#[test]
+fn stack_heap() {
+    function_a();
+    function_b();
+}
+
+#[test]
+fn function_a() {
+    let a = 10;
+    let b = String::from("Ridho");
+}
+
+#[test]
+fn function_b() {
+    let a = 15;
+    let b = String::from("Assuryadi");
+}
