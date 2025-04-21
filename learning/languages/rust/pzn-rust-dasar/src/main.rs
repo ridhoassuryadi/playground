@@ -238,3 +238,25 @@ fn function_b() {
     let a = 15;
     let b = String::from("Assuryadi");
 }
+
+#[test]
+fn string() {
+    let name: &str = "   Ridho Assuryadi  ";
+    let trimmed_name: &str = name.trim();
+
+    println!("{} name", name);
+    println!("{} trimmed name", trimmed_name);
+}
+
+#[test]
+fn string_type() {
+    let mut name: String = String::from("Nasi goreng");
+    println!("{}", name);
+
+    name.push_str("Sayur");
+    println!("{}", name);
+
+    let sambal = name.replace("Nasi", "Sambal");
+    println!("{}", sambal);
+    println!("{}", name);
+}
