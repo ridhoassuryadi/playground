@@ -87,6 +87,40 @@ fn numeric_operator() {
     let e = a + b;
     println!("e: {}", e);
 }
+
+#[test]
+fn boolean() {
+    let a = true;
+    let b: bool = false;
+
+    println!("a: {}, b: {}", a, b);
+}
+
+#[test]
+fn comparison() {
+    let a = 20;
+    let b = 20;
+
+    let result: bool = a >= b; 
+    println!("test: {}", result);
+}
+
+#[test]
+fn boolean_operator() {
+    let absen = 75;
+    let nilai_akhir = 80;
+
+    let lulus_absen: bool = absen >= 75;
+    let lulus_nilai_akhir: bool = nilai_akhir >= 75;
+
+    let lulus: bool = lulus_absen && lulus_nilai_akhir;
+    println!("asoy");
+    println!("hasil bool operator: {}", lulus);
+}
+
+
+
+
 struct Person {
    first_name: String,
    middle_name: String,
@@ -109,3 +143,24 @@ fn get_person() {
     println!("{}", person.age);
 }
 
+#[test]
+fn char_type() {
+    let char1: char = 'a';
+    let char2: char = 'b';
+
+    println!("{} {}", char1, char2);
+}
+
+#[test]
+fn tupple() {
+    let mut data: (i16, f64, bool) = (10, 10.5, false);
+    println!("{:?}", data);
+
+    let (a, b, c) = data;
+    println!("tupple before: {} {} {}", a, b, c);
+
+    data.0 = 11;
+    data.1 = 0.6;
+    data.2 = true;
+    println!("tupple after: {:?}", data);
+}
